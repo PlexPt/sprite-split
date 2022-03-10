@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.github.plexpt</groupId>
+    <artifactId>SpriteSplit</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <logback.version>1.2.3</logback.version>
+        <hutool-all.version>5.4.4</hutool-all.version>
+        <opencsv.version>5.2</opencsv.version>
+        <mysql-connector-java.version>5.1.47</mysql-connector-java.version>
+        <forms_rt.version>7.0.3</forms_rt.version>
+        <fastjson.version>1.2.74</fastjson.version>
+        <sun-mail.version>1.6.2</sun-mail.version>
+        <aliyun-java-sdk-core.version>4.4.2</aliyun-java-sdk-core.version>
+        <poi.version>4.1.2</poi.version>
+        <AppleJavaExtensions.version>1.4</AppleJavaExtensions.version>
+        <qcloudsms.version>1.0.6</qcloudsms.version>
+        <yunpian-java-sdk.version>1.2.7</yunpian-java-sdk.version>
+        <velocity-engine-core.version>2.2</velocity-engine-core.version>
+        <lombok.version>1.18.22</lombok.version>
+        <mybatis.version>3.5.6</mybatis.version>
+        <sqlite-jdbc.version>3.36.0.1</sqlite-jdbc.version>
+        <junit.version>4.13.1</junit.version>
+        <httpasyncclient.version>4.1.4</httpasyncclient.version>
+        <HikariCP.version>3.4.5</HikariCP.version>
+        <quartz.version>2.3.2</quartz.version>
+        <okhttp.version>4.9.1</okhttp.version>
+        <aliyun-java-sdk-dysmsapi.version>1.1.0</aliyun-java-sdk-dysmsapi.version>
+        <bce-java-sdk.version>0.10.134</bce-java-sdk.version>
+        <qiniu-java-sdk.version>7.3.0</qiniu-java-sdk.version>
+        <flatlaf.version>2.0-rc1</flatlaf.version>
+    </properties>
+
+
+    <!-- to add executable jar file with manifest file : -->
+    <build>
+
+        <!-- To parse properties files under resources folder : -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <!-- plugins : -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.github.plexpt.spritesplit.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
