@@ -40,7 +40,9 @@
         <aliyun-java-sdk-dysmsapi.version>1.1.0</aliyun-java-sdk-dysmsapi.version>
         <bce-java-sdk.version>0.10.134</bce-java-sdk.version>
         <qiniu-java-sdk.version>7.3.0</qiniu-java-sdk.version>
-        <flatlaf.version>2.0-rc1</flatlaf.version>
+        <flatlaf.version>2.0.1</flatlaf.version>
+        <flatlaf-extras.version>2.0.1</flatlaf-extras.version>
+        <flatlaf-intellij-themes.version>2.0.1</flatlaf-intellij-themes.version>
     </properties>
 
     <dependencies>
@@ -49,6 +51,30 @@
             <groupId>com.bulenkov</groupId>
             <artifactId>darcula</artifactId>
             <version>2018.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>${flatlaf.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf-extras</artifactId>
+            <version>${flatlaf-extras.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf-intellij-themes</artifactId>
+            <version>${flatlaf-intellij-themes.version}</version>
+        </dependency>
+        <!--GUI Designer -> binary class files-->
+        <dependency>
+            <groupId>com.intellij</groupId>
+            <artifactId>forms_rt</artifactId>
+            <version>${forms_rt.version}</version>
         </dependency>
 
     </dependencies>

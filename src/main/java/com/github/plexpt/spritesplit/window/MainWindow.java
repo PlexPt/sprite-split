@@ -17,7 +17,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -128,14 +127,24 @@ public class MainWindow extends JFrame {
         but1.addActionListener(e -> {
             pathInput.setText("");
 
-            JFileChooser chooser = new JFileChooser();
-            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            chooser.showDialog(new JLabel(), "选择");
-            String path = "";
-            if ((path = chooser.getSelectedFile().getPath()) != null) {
-                pathInput.setText(path);
+            JFileChooser fileChooser = new JFileChooser(pathInput.getText());
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            int approve = fileChooser.showOpenDialog(content);
+            String dbFilePath;
+            if (approve == JFileChooser.APPROVE_OPTION) {
+                dbFilePath = fileChooser.getSelectedFile().getAbsolutePath();
+                pathInput.setText(dbFilePath);
                 this.inFile = pathInput.getText();
             }
+
+//            JFileChooser chooser = new JFileChooser();
+//            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+//            chooser.showDialog(new JLabel(), "选择");
+//            String path = "";
+//            if ((path = chooser.getSelectedFile().getPath()) != null) {
+//                pathInput.setText(path);
+//                this.inFile = pathInput.getText();
+//            }
         });
 
         pathInput.addCaretListener(e1 -> {
@@ -151,14 +160,16 @@ public class MainWindow extends JFrame {
 
         but2.addActionListener(e -> {
             pathOutput.setText("");
-            JFileChooser chooser = new JFileChooser();
-            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            chooser.showDialog(new JLabel(), "选择");
-            String filepath;
-            if ((filepath = chooser.getSelectedFile().getPath()) != null) {
-                pathOutput.setText(filepath);
+            JFileChooser fileChooser = new JFileChooser(pathInput.getText());
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            int approve = fileChooser.showOpenDialog(content);
+            String dbFilePath;
+            if (approve == JFileChooser.APPROVE_OPTION) {
+                dbFilePath = fileChooser.getSelectedFile().getAbsolutePath();
+                pathOutput.setText(dbFilePath);
                 this.outFloder = pathOutput.getText();
             }
+
         });
 
         start.addActionListener(e -> {
