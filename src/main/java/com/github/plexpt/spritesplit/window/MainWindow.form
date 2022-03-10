@@ -53,7 +53,7 @@
               <text value="请选择需要裁剪的图片:"/>
             </properties>
           </component>
-          <component id="fbae6" class="javax.swing.JTextField" binding="file">
+          <component id="fbae6" class="javax.swing.JTextField" binding="pathInput">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="409" height="25"/>
@@ -73,7 +73,7 @@
               <text value="请选裁剪后保存的文件夹:"/>
             </properties>
           </component>
-          <component id="93654" class="javax.swing.JTextField" binding="path">
+          <component id="93654" class="javax.swing.JTextField" binding="pathOutput">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="409" height="25"/>

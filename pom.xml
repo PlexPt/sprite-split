@@ -43,6 +43,15 @@
         <flatlaf.version>2.0-rc1</flatlaf.version>
     </properties>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.bulenkov/darcula -->
+        <dependency>
+            <groupId>com.bulenkov</groupId>
+            <artifactId>darcula</artifactId>
+            <version>2018.2</version>
+        </dependency>
+
+    </dependencies>
 
     <!-- to add executable jar file with manifest file : -->
     <build>
