@@ -2,13 +2,14 @@ package com.github.plexpt.spritesplit.utili;
 
 import com.github.plexpt.spritesplit.window.MainWindow;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * 项目名称: SpriteSplit.
@@ -120,10 +121,18 @@ public class ReaderImage extends Thread {
     }
 
     private void removeList() {
-        for (int i = 0; i < up.size(); i++) up.remove(i);
-        for (int i = 0; i < down.size(); i++) down.remove(i);
-        for (int i = 0; i < left.size(); i++) left.remove(i);
-        for (int i = 0; i < right.size(); i++) right.remove(i);
+        for (int i = 0; i < up.size(); i++) {
+            up.remove(i);
+        }
+        for (int i = 0; i < down.size(); i++) {
+            down.remove(i);
+        }
+        for (int i = 0; i < left.size(); i++) {
+            left.remove(i);
+        }
+        for (int i = 0; i < right.size(); i++) {
+            right.remove(i);
+        }
     }
 
     private void add_up() {
@@ -160,7 +169,10 @@ public class ReaderImage extends Thread {
 
     private void readerRightLine(List<int[]> right) {
         for (int[] ints : right) {
-            if ((image.getRGB(ints[0], ints[1]) >>> 24) != 0) {
+            System.out.println("" + ints[0] + ", " + ints[1]);
+            int imageRGB = image.getRGB(ints[0] -1, ints[1]);
+
+            if ((imageRGB >>> 24) != 0) {
                 if (ints[0] != width) {
                     add_right();
                     readerRightLine(right);

@@ -15,6 +15,7 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -40,6 +41,7 @@ public class MainWindow extends JFrame {
     private JButton but2;
     private JTextPane prviewer;
     private JButton start;
+    private JCheckBox autoOutCheckBox;
 
     private String inFile;
     private String outFloder;
@@ -80,8 +82,7 @@ public class MainWindow extends JFrame {
                             dtde.rejectDrop();
                             return;
                         }
-                        pathInput.setText(file.getAbsolutePath());
-                        inFile = pathInput.getText();
+                        selectInputFile(file.getAbsolutePath());
 
                         dtde.dropComplete(true);
                     } else {
@@ -133,8 +134,10 @@ public class MainWindow extends JFrame {
             String dbFilePath;
             if (approve == JFileChooser.APPROVE_OPTION) {
                 dbFilePath = fileChooser.getSelectedFile().getAbsolutePath();
-                pathInput.setText(dbFilePath);
-                this.inFile = pathInput.getText();
+//                pathInput.setText(dbFilePath);
+//                this.inFile = pathInput.getText();
+                selectInputFile(dbFilePath);
+
             }
 
 //            JFileChooser chooser = new JFileChooser();
@@ -168,6 +171,7 @@ public class MainWindow extends JFrame {
                 dbFilePath = fileChooser.getSelectedFile().getAbsolutePath();
                 pathOutput.setText(dbFilePath);
                 this.outFloder = pathOutput.getText();
+
             }
 
         });
@@ -179,8 +183,24 @@ public class MainWindow extends JFrame {
             readerImage.setFileName(name.getText());
             readerImage.setFormat(format.getText());
             readerImage.setPath(outFloder);
-            readerImage.start();
+            try {
+                readerImage.start();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            start.setEnabled(true);
+
         });
+    }
+
+    private void selectInputFile(String file) {
+        pathInput.setText(file);
+        inFile = pathInput.getText();
+        if (autoOutCheckBox.isSelected()) {
+            String parent = new File(file).getParent() + "/split";
+            pathOutput.setText(parent);
+            this.outFloder = pathOutput.getText();
+        }
     }
 
     public JTextPane getCatpre() {
