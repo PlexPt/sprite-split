@@ -30,6 +30,7 @@
         <yunpian-java-sdk.version>1.2.7</yunpian-java-sdk.version>
         <velocity-engine-core.version>2.2</velocity-engine-core.version>
         <lombok.version>1.18.22</lombok.version>
+        <commons.lang3.version>3.12.0</commons.lang3.version>
         <mybatis.version>3.5.6</mybatis.version>
         <sqlite-jdbc.version>3.36.0.1</sqlite-jdbc.version>
         <junit.version>4.13.1</junit.version>
@@ -76,7 +77,30 @@
             <artifactId>forms_rt</artifactId>
             <version>${forms_rt.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>0.4.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.7.21</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang3.version}</version>
+        </dependency>
     </dependencies>
 
     <!-- to add executable jar file with manifest file : -->
@@ -102,7 +126,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.github.plexpt.spritesplit.Main</mainClass>
+                            <mainClass>com.github.plexpt.spritesplit.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

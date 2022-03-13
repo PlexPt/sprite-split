@@ -1,6 +1,6 @@
 package com.github.plexpt.spritesplit.utili;
 
-import com.github.plexpt.spritesplit.window.MainWindow;
+import com.github.plexpt.spritesplit.window.SpriteCutPannel;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -29,14 +29,14 @@ public class ReaderImage extends Thread {
     private String fileName = "img_";
     private String format = ".png";
     private String path = "";
-    private MainWindow mainWindow;
+    private SpriteCutPannel spriteCutPannel;
     private List<int[]> up;
     private List<int[]> down;
     private List<int[]> left;
     private List<int[]> right;
 
-    public ReaderImage(String path, MainWindow mainWindow) {
-        this.mainWindow = mainWindow;
+    public ReaderImage(String path, SpriteCutPannel spriteCutPannel) {
+        this.spriteCutPannel = spriteCutPannel;
         loader = new LoaderFile();
         image = loader.load(path);
         width = image.getWidth();
@@ -54,7 +54,7 @@ public class ReaderImage extends Thread {
     private void getPixelRGB() {
         while (true) {
             if (readPixel() == -1) {
-                mainWindow.showOk();
+                spriteCutPannel.showOk();
                 return;
             }
         }
@@ -87,7 +87,7 @@ public class ReaderImage extends Thread {
             if (!path.equals("")) {
                 String filePath = path + "\\" + fileName + cont + format;
                 ImageIO.write(out, "png", new File(filePath));
-                mainWindow.getCatpre().insertIcon(new ImageIcon(filePath));
+                spriteCutPannel.getCatpre().insertIcon(new ImageIcon(filePath));
             } else {
                 ImageIO.write(out, "png", new File(fileName + cont + format));
             }

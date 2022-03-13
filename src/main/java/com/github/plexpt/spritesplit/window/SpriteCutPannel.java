@@ -1,6 +1,5 @@
 package com.github.plexpt.spritesplit.window;
 
-import com.github.plexpt.spritesplit.utili.LookAndFeelUtil;
 import com.github.plexpt.spritesplit.utili.ReaderImage;
 
 import java.awt.datatransfer.DataFlavor;
@@ -17,11 +16,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
-import javax.swing.WindowConstants;
+
+import lombok.Getter;
 
 /**
  * 项目名称: SpriteSplit.
@@ -29,7 +28,8 @@ import javax.swing.WindowConstants;
  * 创 建 人: Var_雨中行.
  * 类 描 述: .
  */
-public class MainWindow extends JFrame {
+@Getter
+public class SpriteCutPannel     {
     private JPanel content;
     private JTextField pathInput;
     private JTextField pathOutput;
@@ -49,18 +49,39 @@ public class MainWindow extends JFrame {
     private final double WINDOW_WIDTH = 1366;
     private final double WINDOW_HEIGHT = 740;
 
-    public MainWindow() {
-        this.setContentPane(content);
-        this.setTitle("雪碧图集切割工具 -- 1.0");
-        this.setVisible(true);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setSize((int) WINDOW_WIDTH, (int) WINDOW_HEIGHT);
-        LookAndFeelUtil.centerSizeWindow(this);
-        this.setResizable(false);
+    private static SpriteCutPannel spriteCutPannel;
+
+    public static SpriteCutPannel getInstance() {
+        if (spriteCutPannel == null) {
+            spriteCutPannel = new SpriteCutPannel();
+        }
+        return spriteCutPannel;
+    }
+
+    private SpriteCutPannel() {
         name.setText("split_");
         num.setText("0");
         format.setText(".png");
         initListener();
+    }
+
+
+    public SpriteCutPannel(int x) {
+//        this.setContentPane(content);
+//        this.setTitle("雪碧图集切割工具 -- 1.0");
+//        this.setVisible(true);
+//        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        this.setSize((int) WINDOW_WIDTH, (int) WINDOW_HEIGHT);
+//        LookAndFeelUtil.centerSizeWindow(this);
+//        this.setResizable(false);
+        name.setText("split_");
+        num.setText("0");
+        format.setText(".png");
+        initListener();
+    }
+
+    public static void start() {
+        new SpriteCutPannel();
     }
 
     private void initListener() {
