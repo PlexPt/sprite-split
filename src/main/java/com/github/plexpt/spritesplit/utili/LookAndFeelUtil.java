@@ -5,12 +5,17 @@ import com.github.plexpt.spritesplit.App;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.util.Enumeration;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.basic.BasicLookAndFeel;
+
+import mdlaf.MaterialLookAndFeel;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
@@ -22,7 +27,8 @@ import static java.awt.Toolkit.getDefaultToolkit;
 public class LookAndFeelUtil {
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-    private static Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(App.mainFrame.getGraphicsConfiguration());
+    private static Insets screenInsets =
+            Toolkit.getDefaultToolkit().getScreenInsets(App.mainFrame.getGraphicsConfiguration());
 
     private static int screenWidth = screenSize.width - screenInsets.left - screenInsets.right;
 
@@ -52,6 +58,29 @@ public class LookAndFeelUtil {
     }
 
     /**
+     * 使用MD主题
+     */
+    public static void setMaterialLookAndFeel() {
+        try {
+            MaterialLookAndFeel lookAndFeel = new MaterialLookAndFeel();
+
+            Font font = new Font("微软雅黑", Font.PLAIN, 12);
+            FontUIResource fontRes = new FontUIResource(font);
+            for (Enumeration<Object> keys = UIManager.getDefaults().keys(); keys.hasMoreElements(); ) {
+                Object key = keys.nextElement();
+                Object value = UIManager.get(key);
+                if (value instanceof FontUIResource) {
+                    UIManager.put(key, fontRes);
+                }
+            }
+
+            UIManager.setLookAndFeel(lookAndFeel);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 窗口居中
      */
     public static void centerSizeWindow(JFrame frame) {
@@ -66,7 +95,9 @@ public class LookAndFeelUtil {
     /**
      * 设置组件preferSize并定位于屏幕中央(基于屏幕宽高的百分百)
      */
-    public static void setPreferSizeAndLocateToCenter(Component component, double preferWidthPercent, double preferHeightPercent) {
+    public static void setPreferSizeAndLocateToCenter(Component component,
+                                                      double preferWidthPercent,
+                                                      double preferHeightPercent) {
         int preferWidth = (int) (screenWidth * preferWidthPercent);
         int preferHeight = (int) (screenHeight * preferHeightPercent);
         setPreferSizeAndLocateToCenter(component, preferWidth, preferHeight);
@@ -75,7 +106,8 @@ public class LookAndFeelUtil {
     /**
      * 设置组件preferSize并定位于屏幕中央
      */
-    public static void setPreferSizeAndLocateToCenter(Component component, int preferWidth, int preferHeight) {
+    public static void setPreferSizeAndLocateToCenter(Component component, int preferWidth,
+                                                      int preferHeight) {
         component.setBounds((screenWidth - preferWidth) / 2, (screenHeight - preferHeight) / 2,
                 preferWidth, preferHeight);
         Dimension preferSize = new Dimension(preferWidth, preferHeight);

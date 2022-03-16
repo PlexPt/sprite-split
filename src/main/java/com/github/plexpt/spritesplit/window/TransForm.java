@@ -1,6 +1,7 @@
 package com.github.plexpt.spritesplit.window;
 
-import com.github.plexpt.spritesplit.utili.IconReSizer;
+import com.github.plexpt.spritesplit.App;
+import com.github.plexpt.spritesplit.utili.CfgTranslator;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -15,6 +16,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -30,15 +32,14 @@ import lombok.Getter;
 @Getter
 public class TransForm {
     private JPanel content;
-    private JButton but1;
     private JTextField pathInput;
     private JTextField pathOutput;
-    private JButton but2;
     private JCheckBox autoOutCheckBox;
     private JTextArea prviewer;
     private JTextArea transed;
     private JButton start;
     private JCheckBox overCheck;
+    private JButton but1;
 
 
     private static TransForm form;
@@ -55,6 +56,16 @@ public class TransForm {
             }
 
             start.setEnabled(true);
+        });
+
+        but1.addActionListener(e -> {
+            // 消息对话框无返回, 仅做通知作用
+            JOptionPane.showMessageDialog(
+                    App.mainFrame,
+                    "拖放cfg文件，即可自动翻译",
+                    "消息",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
         });
 
         new DropTarget(pathInput, new DropTargetAdapter() {
@@ -128,12 +139,22 @@ public class TransForm {
             return;
         }
         prviewer.setText("");
-        IconReSizer.of(inputText)
+
+
+        CfgTranslator.of(inputText)
                 .outDir(outputText)
-                .onProgress(evt -> {
-                    prviewer.append(evt + "\n");
+                .onProgress(new CfgTranslator.ReProgressListener() {
+                    @Override
+                    public void progressUpdate(String evt) {
+                        prviewer.append(evt + "\n");
+                    }
+
+                    @Override
+                    public void progressRightUpdate(String evt) {
+                        transed.append(evt + "\n");
+                    }
                 })
-                .resize();
+                .start();
 
     }
 

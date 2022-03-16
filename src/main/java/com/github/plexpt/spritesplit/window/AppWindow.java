@@ -68,6 +68,7 @@ public class AppWindow {
         window.getResizePanel().add(ResizeForm.getInstance().getContent(), GRID_CONSTRAINTS);
         window.getAboutPanel().add(AboutForm.getInstance().getAboutPanel(), GRID_CONSTRAINTS);
         window.getTransPanel().add(TransForm.getInstance().getContent(), GRID_CONSTRAINTS);
+        window.getSettingPanel().add(SettingForm.getInstance().getContent(), GRID_CONSTRAINTS);
 //        window.getPushHisPanel().add(PushHisForm.getInstance().getPushHisPanel(),
 //        GRID_CONSTRAINTS);
 //        window.getSettingPanel().add(SettingForm.getInstance().getSettingPanel(),

@@ -6,13 +6,15 @@ import com.github.plexpt.spritesplit.window.MainFrame;
 
 import javax.swing.JFrame;
 
+import mdlaf.MaterialLookAndFeel;
+
 public class App {
 
     public static MainFrame mainFrame;
 
     public static void main(String[] args) {
         mainFrame = new MainFrame();
-        LookAndFeelUtil.setSystemLookAndFeel();
+        LookAndFeelUtil.setMaterialLookAndFeel();
         mainFrame.init();
 
         if (LookAndFeelUtil.getScreenSizeWidth() <= 1366) {
