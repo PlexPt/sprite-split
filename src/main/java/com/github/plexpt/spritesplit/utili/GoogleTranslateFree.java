@@ -2,7 +2,6 @@ package com.github.plexpt.spritesplit.utili;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.google.common.base.Charsets;
 
 import net.dreamlu.mica.http.HttpRequest;
 
@@ -10,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -68,7 +68,7 @@ public class GoogleTranslateFree {
         }
         String result = "";
         try {
-            result = HttpRequest.get(api + URLEncoder.DEFAULT.encode(text, Charsets.UTF_8))
+            result = HttpRequest.get(api + URLEncoder.DEFAULT.encode(text, StandardCharsets.UTF_8))
                     .connectTimeout(Duration.ofSeconds(3))
                     .readTimeout(Duration.ofSeconds(3))
                     .writeTimeout(Duration.ofSeconds(3))

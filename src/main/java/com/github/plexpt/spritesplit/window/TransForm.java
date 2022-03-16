@@ -62,7 +62,7 @@ public class TransForm {
             // 消息对话框无返回, 仅做通知作用
             JOptionPane.showMessageDialog(
                     App.mainFrame,
-                    "拖放cfg文件，即可自动翻译",
+                    "拖放cfg文件到左边，点击 开始处理按钮 自动翻译\n翻译完成人工校对一下即可\n之后可考虑提交到 https://mods.factorio.com/mod/chinese",
                     "消息",
                     JOptionPane.INFORMATION_MESSAGE
             );

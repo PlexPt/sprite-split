@@ -54,23 +54,23 @@
             <version>2018.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.formdev</groupId>
-            <artifactId>flatlaf</artifactId>
-            <version>${flatlaf.version}</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.formdev</groupId>-->
+        <!--            <artifactId>flatlaf</artifactId>-->
+        <!--            <version>${flatlaf.version}</version>-->
+        <!--        </dependency>-->
 
-        <dependency>
-            <groupId>com.formdev</groupId>
-            <artifactId>flatlaf-extras</artifactId>
-            <version>${flatlaf-extras.version}</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.formdev</groupId>-->
+        <!--            <artifactId>flatlaf-extras</artifactId>-->
+        <!--            <version>${flatlaf-extras.version}</version>-->
+        <!--        </dependency>-->
 
-        <dependency>
-            <groupId>com.formdev</groupId>
-            <artifactId>flatlaf-intellij-themes</artifactId>
-            <version>${flatlaf-intellij-themes.version}</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.formdev</groupId>-->
+        <!--            <artifactId>flatlaf-intellij-themes</artifactId>-->
+        <!--            <version>${flatlaf-intellij-themes.version}</version>-->
+        <!--        </dependency>-->
         <!--GUI Designer -> binary class files-->
         <dependency>
             <groupId>com.intellij</groupId>
@@ -92,7 +92,12 @@
 
         <dependency>
             <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
+            <artifactId>hutool-core</artifactId>
+            <version>5.7.21</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-http</artifactId>
             <version>5.7.21</version>
         </dependency>
 
@@ -107,6 +112,16 @@
             <groupId>com.github.plexpt</groupId>
             <artifactId>toolkit</artifactId>
             <version>2021.1.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>cn.hutool</groupId>
+                    <artifactId>hutool-all</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
@@ -129,11 +144,11 @@
             <version>1.2.11</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba</groupId>-->
-<!--            <artifactId>easyexcel</artifactId>-->
-<!--            <version>3.0.5</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.alibaba</groupId>-->
+        <!--            <artifactId>easyexcel</artifactId>-->
+        <!--            <version>3.0.5</version>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>io.github.vincenzopalazzo</groupId>
@@ -188,7 +203,12 @@
                     <mainClass>com.github.plexpt.spritesplit.App</mainClass>
                     <generateInstaller>true</generateInstaller>
                     <!-- 这行不能被格式化为多行，否则会出错-->
-                    <vmArgs>--add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</vmArgs>
+                    <vmArgs>--add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports
+                        jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports
+                        jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports
+                        jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports
+                        jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED
+                    </vmArgs>
                 </configuration>
                 <executions>
                     <execution>
