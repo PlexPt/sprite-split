@@ -14,7 +14,7 @@ public class App {
 
     public static void main(String[] args) {
         mainFrame = new MainFrame();
-        LookAndFeelUtil.setMaterialLookAndFeel();
+        LookAndFeelUtil.setSystemLookAndFeel();
         mainFrame.init();
 
         if (LookAndFeelUtil.getScreenSizeWidth() <= 1366) {

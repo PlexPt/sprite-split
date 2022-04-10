@@ -44,7 +44,7 @@ public class SeqSpriter {
             if (len > length) {
                 buffer.append("\n" + line + "\n");
                 //利用StringBuffer对字符串进行修改
-                len = line.length() + 1;
+                len = line.length() + 2;
                 //+1为换行后读出空格一位
             } else {
                 buffer.append(line + "\n");
