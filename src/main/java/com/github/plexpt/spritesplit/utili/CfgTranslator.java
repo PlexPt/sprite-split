@@ -105,7 +105,7 @@ public class CfgTranslator {
 
         String sequence = merger.toSequence();
 
-        GoogleTranslateFree.noProxy();
+        GoogleTranslateFree.DefaultProxy();
         String translate = GoogleTranslateFree.translate(sequence);
         translate = CfgTranslator.replace(translate);
         merger.fromSequence(translate);

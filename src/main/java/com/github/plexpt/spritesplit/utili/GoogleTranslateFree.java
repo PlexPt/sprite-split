@@ -37,6 +37,9 @@ public class GoogleTranslateFree {
     public static final RingBuffer<Proxy> queue = new RingBuffer<>();
     public static Proxy p = null;
 
+    public static Proxy PROXY_DEFAULT = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("127.0" +
+            ".0.1", 1080));
+
 
     public static String translate(String text) {
         if (StringUtils.isBlank(text)) {
@@ -120,6 +123,10 @@ public class GoogleTranslateFree {
 
     public static void noProxy() {
         p = Proxy.NO_PROXY;
+    }
+
+    public static void DefaultProxy() {
+        p = PROXY_DEFAULT;
     }
 
     public static void localProxy() {
