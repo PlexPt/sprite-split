@@ -40,6 +40,7 @@ public class ResizeForm {
     private JTextArea prviewer;
     private JButton start;
     private JCheckBox overCheck;
+    private JCheckBox pad;
 
 
     private static ResizeForm form;
@@ -130,6 +131,7 @@ public class ResizeForm {
         }
         prviewer.setText("");
         IconReSizer.of(inputText)
+                .pad(pad.isSelected())
                 .outDir(outputText)
                 .onProgress(evt -> {
                     prviewer.append(evt + "\n");

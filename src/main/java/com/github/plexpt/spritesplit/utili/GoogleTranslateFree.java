@@ -47,9 +47,9 @@ public class GoogleTranslateFree {
         }
         String result = "";
 
-        if (text.length() > 5000) {
-            log.info(text.length() + "> 5000 文件太长， 分割中");
-            List<String> list = SeqSpriter.makelinefeed(text, 5000);
+        if (text.length() > 4900) {
+            log.info(" 文件太长 {}， 分割中", text.length());
+            List<String> list = SeqSpriter.makelinefeed(text, 4900);
             for (String s : list) {
                 String trans = trans(s);
                 result += trans + "\n";

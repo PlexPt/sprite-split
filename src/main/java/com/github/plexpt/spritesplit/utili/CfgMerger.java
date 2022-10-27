@@ -13,6 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.hutool.core.img.gif.GifDecoder;
 import cn.hutool.core.io.FileUtil;
 import lombok.Data;
 
@@ -86,10 +87,15 @@ public class CfgMerger {
         for (Map.Entry<String, LinkedHashMap<String, String>> entry : iniMap.entrySet()) {
             for (Map.Entry<String, String> stringEntry : entry.getValue().entrySet()) {
 
-                String value = split[index];
-                value = value.substring(value.indexOf("=") + 1);
-                stringEntry.setValue(value);
-                index++;
+                try {
+                    String value = split[index];
+                    value = value.substring(value.indexOf("=") + 1);
+                    stringEntry.setValue(value);
+                    index++;
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
         }

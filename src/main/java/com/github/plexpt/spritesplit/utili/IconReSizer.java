@@ -29,6 +29,8 @@ public class IconReSizer {
 
     String outDir = "";
 
+    boolean pad = true;
+
     ReProgressListener listener = evt -> {
     };
 
@@ -49,6 +51,18 @@ public class IconReSizer {
     @SneakyThrows
     public IconReSizer outDir(String pathname) {
         outDir = pathname;
+        return this;
+    }
+
+    /**
+     * 2进制整数对齐
+     *
+     * @param pad
+     * @return
+     */
+    @SneakyThrows
+    public IconReSizer pad(boolean pad) {
+        this.pad = pad;
         return this;
     }
 
@@ -139,7 +153,7 @@ public class IconReSizer {
         listener.progressUpdate(text);
     }
 
-    public static int getReSize(BufferedImage image) {
+    public int getReSize(BufferedImage image) {
         int size = image.getWidth() > image.getHeight() ? image.getWidth() : image.getHeight();
         int reSize = getReSize(size);
         return reSize;
@@ -162,7 +176,10 @@ public class IconReSizer {
                 .toFile("images/tmp/1.png");
     }
 
-    public static int getReSize(int size) {
+    public int getReSize(int size) {
+        if (!pad) {
+            return size;
+        }
         if (size <= 64) {
             return 64;
         } else if (size <= 128) {
